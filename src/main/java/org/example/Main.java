@@ -15,14 +15,18 @@ public class Main {
         myContactsManager.addContact(tom);
         myContactsManager.addContact(john);
         myContactsManager.addContact(ema);
+        myContactsManager.addContact("Mike", "Mike@email.com", "0049123098");
+
+        Contact mikael = new Contact("Mikael", "0049123098");
+        myContactsManager.addContact(mikael);
+
+        Contact luke = new Contact("Luke");
+        myContactsManager.addContact(luke);
 
         Contact foundContact = myContactsManager.searchContact("Tom");
         if (foundContact != null)
-
-
-            System.out.println("Contact found: " + foundContact.name + ", phone: " + foundContact.phoneNumber);
-        else
-            System.out.println("Contact not found!");
+            System.out.println("Contact found: " + foundContact);
+        else System.out.println("Contact not found!");
         System.out.println("_____________________");
 
         myContactsManager.listContacts();
