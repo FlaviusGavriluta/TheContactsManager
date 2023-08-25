@@ -13,8 +13,10 @@ public class ContactsManager {
 
     // Methods:
     void addContact(Contact contact) {
-        myFriends[friendsCount] = contact;
-        friendsCount++;
+        if (friendsCount < 500) {
+            myFriends[friendsCount] = contact;
+            friendsCount++;
+        } else System.out.println("The contact limit has been reached!");
     }
 
     Contact searchContact(String searchName) {
@@ -23,5 +25,13 @@ public class ContactsManager {
                 return myFriends[i];
         }
         return null;
+    }
+
+    public void listContacts() {
+        System.out.println("Contacts list: ");
+        for (int i = 0; i < friendsCount; i++)
+            System.out.println("Name: " + myFriends[i].name
+                    + ", Email: " + myFriends[i].email
+                    + ", Phone: " + myFriends[i].phoneNumber);
     }
 }
