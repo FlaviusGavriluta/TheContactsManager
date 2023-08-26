@@ -2,20 +2,21 @@ package org.example;
 
 public class ContactsManager {
     // Fields:
+    public final int MAX_CONTACTS = 500;
     Contact[] myFriends;
-    int friendsCount;
+    private static int totalContacts;
 
     // Constructor:
     public ContactsManager() {
-        this.myFriends = new Contact[500];
-        this.friendsCount = 0;
+        this.myFriends = new Contact[MAX_CONTACTS];
+        this.totalContacts = 0;
     }
 
     // Methods:
     void addContact(Contact contact) {
-        if (friendsCount < 500) {
-            myFriends[friendsCount] = contact;
-            friendsCount++;
+        if (totalContacts < 500) {
+            myFriends[totalContacts] = contact;
+            totalContacts++;
         } else System.out.println("The contact limit has been reached!");
     }
 
@@ -25,7 +26,7 @@ public class ContactsManager {
     }
 
     Contact searchContact(String searchName) {
-        for (int i = 0; i < friendsCount; i++) {
+        for (int i = 0; i < totalContacts; i++) {
             if (myFriends[i].getName().equals(searchName)) return myFriends[i];
         }
         return null;
@@ -33,8 +34,12 @@ public class ContactsManager {
 
     public void listContacts() {
         System.out.println("Contacts list: ");
-        for (int i = 0; i < friendsCount; i++) {
+        for (int i = 0; i < totalContacts; i++) {
             System.out.println(myFriends[i]);
         }
+    }
+
+    public static void printTotalContacts() {
+        System.out.println("Total contacts: " + totalContacts);
     }
 }

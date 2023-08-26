@@ -29,6 +29,7 @@ public class Main {
         else System.out.println("Contact not found!");
         System.out.println("_____________________");
 
+        ContactsManager.printTotalContacts();
         myContactsManager.listContacts();
     }
 }
